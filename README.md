@@ -1,4 +1,4 @@
-![LOGO](https://github.com/AnnaShino/KTG_ksiazeczka_zdrowia/blob/main/logo.png)
+<img src="https://github.com/AnnaShino/KTG_ksiazeczka_zdrowia/blob/main/logo.png" width="200">
 
 # KTG_ksiazeczka_zdrowia
 
@@ -10,7 +10,7 @@ Aplikacja ma pełnić funkcję zapoznawczą, z możliwościami (podstawowymi) te
 
 Aplikacja stworzona w dwóch wersjach językowych (wybór języka na samym początku), dzięki czamu staje się bardziej dostępna.
 
-![jezyk](https://github.com/AnnaShino/KTG_ksiazeczka_zdrowia/blob/main/j%C4%99zyk.jpg)
+<img src="https://github.com/AnnaShino/KTG_ksiazeczka_zdrowia/blob/main/j%C4%99zyk.jpg" width="200">
 
 # NOWOCZESNE ROZWIĄZANIA
 

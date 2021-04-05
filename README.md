@@ -27,10 +27,10 @@ Dzięki wykorzystaniu wbudowanej bazy ddanych, nie ma konieczności łączenia s
 # POZWOLENIA
 
 Aby wykorzystane rozwiązania działąły sprawnie w AndroidManifest.xml należy zamieścić poniższe pozwolenia:
-* <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
-* <uses-permission android:name="android.permission.INTERNET" />
-* <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-* <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+* uses-permission android:name="android.permission.USE_BIOMETRIC"
+* uses-permission android:name="android.permission.INTERNET"
+* uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+* uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
 
 ![pozwolenia](https://github.com/AnnaShino/KTG_ksiazeczka_zdrowia/blob/main/pozwolenia.jpg)
 

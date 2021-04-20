@@ -42,6 +42,14 @@ Ze względu na wbudowaną bazę aplikacja zajmuje więcej niż 25 mb, dlatego te
 
 https://nextcloud.halidelabs.eu/index.php/s/qCMnPgk4iJYAciJ
 
+# Zapoznaj się z aplikacją :)
+
+Poniżej link do video pokazującego działanie aplikacji!
+
+https://nextcloud.halidelabs.eu/index.php/s/DCA2ny6C4dmWAaa
+
+# Materiały wykorzystane w aplikacji
+
 W aplikacji wykorzystano 5 filmów z YOUTUBE w ramach przykładu. Poniżej umieszczam linki do wykorzystanych filmów:
 * https://www.youtube.com/watch?v=2KsZQSZKmTU
 * https://www.youtube.com/watch?v=u5R39XxVd48

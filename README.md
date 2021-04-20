@@ -6,6 +6,8 @@ Pokazowa aplikacja w ramach projektu na studia, która ma służyć kobietą ci�
 
 Aplikacja ma pełnić funkcję zapoznawczą, z możliwościami (podstawowymi) tego typu rozwiązań. Wykorzystane w niej grafiki są mojego autorstwa.
 
+Aplikacja stoworzona z myślą o urządzeniach ANDROID.
+
 # JĘZYK
 
 Aplikacja stworzona w dwóch wersjach językowych (wybór języka na samym początku), dzięki czamu staje się bardziej dostępna.

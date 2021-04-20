@@ -63,14 +63,12 @@ class PanelGłównyEN: AppCompatActivity() {
             startActivity(i)
             this.finish()
         }
-
+        
         val button2 = findViewById<Button>(R.id.button11)
         button2.setOnClickListener {
-            Toast.makeText(
-                    this,
-                    "Error! Unable to start the module. Connect a compatible device!",
-                    Toast.LENGTH_LONG
-            ).show()
+            val i = Intent(this, KTGEN::class.java)
+            startActivity(i)
+            this.finish()
         }
 
         val button3 = findViewById<Button>(R.id.button12)

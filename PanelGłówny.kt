@@ -68,11 +68,9 @@ class PanelGłówny: AppCompatActivity()
 
         val button2 = findViewById<Button>(R.id.button21)
         button2.setOnClickListener {
-            Toast.makeText(
-                this,
-                "Błąd! Brak możliwości uruchomienia modułu. Podłącz kompatybilne urządzenie!",
-                Toast.LENGTH_LONG
-            ).show()
+            val i = Intent(this, KTG::class.java)
+            startActivity(i)
+            this.finish()
         }
 
         val button3 = findViewById<Button>(R.id.button22)

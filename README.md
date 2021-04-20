@@ -40,7 +40,7 @@ Aby wykorzystane rozwiązania działąły sprawnie w AndroidManifest.xml należy
 
 Ze względu na wbudowaną bazę aplikacja zajmuje więcej niż 25 mb, dlatego też nie mogła zostać bezpośrednio umieszczona w repozytorium. Poniżej wstawiam link do jej pobrania.
 
-https://nextcloud.halidelabs.eu/index.php/s/qGXT25JmjMKxWbp
+https://nextcloud.halidelabs.eu/index.php/s/qCMnPgk4iJYAciJ
 
 W aplikacji wykorzystano 5 filmów z YOUTUBE w ramach przykładu. Poniżej umieszczam linki do wykorzystanych filmów:
 * https://www.youtube.com/watch?v=2KsZQSZKmTU

@@ -51,7 +51,7 @@ https://nextcloud.halidelabs.eu/index.php/s/qCMnPgk4iJYAciJ
 
 # Zapoznaj się z aplikacją :)
 
-Poniżej link do video pokazującego działanie aplikacji!
+Poniżej link do video pokazującego działanie pierwszej wersji aplikacji! Aby zapoznać się z najnowszą, zapraszam do instalacji :) 
 
 https://nextcloud.halidelabs.eu/index.php/s/DCA2ny6C4dmWAaa
 

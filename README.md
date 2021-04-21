@@ -66,4 +66,5 @@ W aplikacji wykorzystano 5 filmów z YOUTUBE w ramach przykładu. Poniżej umies
 * https://www.youtube.com/watch?v=TsC6hu-RxOM
 * https://www.youtube.com/watch?v=yyO0YnXCmtU
 
-
+Stroną podłączoną w jednym z peneli jest PulsMedycyny:
+* https://pulsmedycyny.pl/

@@ -22,6 +22,8 @@ Aby aplikacja "szła z duchem czasu" dodano zabezpieczenie biometryczne.
 
 Dodatkowo Aplikacja dostosowuje się do motywu telefony (ciemny / jasny) dzięki czemu jest bardziej przyjazna użytkownikiwi.
 
+Aplikacja prezentuje możliwości telefonu po połączeniu z urządzeniem takim jak KTG. Przykładem jest odtwarzanie dźwięku z KTG oraz zapis dźwięku z badania w formie mp3. Moduł ten jest związany z Bluetooth :) 
+
 # WBUDOWANA BAZA DANYCH
 
 Dzięki wykorzystaniu wbudowanej bazy ddanych, nie ma konieczności łączenia się z siecią. W przypadku aplikacji "komercyjnych" nie zalecałabym jednak takiego rozwiązania.

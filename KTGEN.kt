@@ -29,17 +29,17 @@ class KTGEN: AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-                    val i = Intent(this, PanelGłówny::class.java)
+                    val i = Intent(this, PanelGłównyEN::class.java)
                     startActivity(i)
                     this.finish()
                 }
                 R.id.account -> {
-                    val i = Intent(this, Dane::class.java)
+                    val i = Intent(this, DaneEN::class.java)
                     startActivity(i)
                     this.finish()
                 }
                 R.id.chart -> {
-                    val i = Intent(this, ChartFragment::class.java)
+                    val i = Intent(this, ChartFragmentEN::class.java)
                     startActivity(i)
                     this.finish()
                 }

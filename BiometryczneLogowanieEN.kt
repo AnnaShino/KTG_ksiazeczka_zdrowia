@@ -19,7 +19,7 @@ class BiometryczneLogowanieEN : AppCompatActivity() {
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // poniższy fragment pozwala na usunięcie nieestetycznego górnego z nazwą layautu
+
         super.onCreate(savedInstanceState)
         window.setFeatureInt(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -28,7 +28,7 @@ class BiometryczneLogowanieEN : AppCompatActivity() {
         this.supportActionBar!!.hide()
         setContentView(R.layout.biometryczne_en)
 
-        //inicjacja biometrii
+
         executor = ContextCompat.getMainExecutor(this)
 
         biometricPrompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
@@ -56,7 +56,6 @@ class BiometryczneLogowanieEN : AppCompatActivity() {
                 .setNegativeButtonText("..").build()
 
 
-        // autoryzacja
         val button2 = findViewById<Button>(R.id.verification_button1)
         button2.setOnClickListener {
             biometricPrompt.authenticate(promptInfo)

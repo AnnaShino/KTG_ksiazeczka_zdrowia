@@ -1,5 +1,7 @@
 package com.example.ktg
 
+//wymagane importy związane z działaniem aplikacji
+
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -13,7 +15,6 @@ import kotlin.system.exitProcess
 
 
 class PanelGłówny: AppCompatActivity()
-    //SimpleCountDownTimerKotlin.OnCountDownListener
 {
 
     // ponizszy fragment związany jest z funkcjonalnością bottomNavigation
@@ -45,6 +46,7 @@ class PanelGłówny: AppCompatActivity()
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        
         // poniższy fragment pozwala na usunięcie nieestetycznego górnego z nazwą layautu
         super.onCreate(savedInstanceState)
         window.setFeatureInt(
@@ -59,6 +61,7 @@ class PanelGłówny: AppCompatActivity()
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
+        // przyciski funkcyjne
         val button1 = findViewById<Button>(R.id.button20)
         button1.setOnClickListener {
             val i = Intent(this, Wyniki::class.java)
@@ -96,6 +99,7 @@ class PanelGłówny: AppCompatActivity()
 
     }
 
+    //poniższy fragment odpowiada za wychodzenie z aplikacji za pomocą przycisku funkcyjnego
     private var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {

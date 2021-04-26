@@ -1,5 +1,7 @@
 package com.example.ktg
 
+//wymagane importy związane z działaniem aplikacji
+
 import android.content.Intent
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
@@ -20,6 +22,7 @@ import kotlin.system.exitProcess
 
 class WprowadzanieDanychWynikow : AppCompatActivity() {
 
+    //inicjalizacja paska i działanie przycisków
     lateinit var toolbar: ActionBar
 
     private val mOnNavigationItemSelectedListener =
@@ -46,6 +49,7 @@ class WprowadzanieDanychWynikow : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        
         // poniższy fragment pozwala na usunięcie nieestetycznego górnego z nazwą layautu
         super.onCreate(savedInstanceState)
         window.setFeatureInt(
@@ -65,6 +69,7 @@ class WprowadzanieDanychWynikow : AppCompatActivity() {
 
         var data = LocalDate.now()
 
+        //tworzenie danych
         var plik_zapisu = filesDir
 
         val wyniki = File(plik_zapisu, "wyniki")
@@ -237,6 +242,7 @@ class WprowadzanieDanychWynikow : AppCompatActivity() {
             }
         }
 
+        //poniższy fragment odpowiada za wychodzenie z aplikacji za pomocą przycisku funkcyjnego
         private var doubleBackToExitPressedOnce = false
         override fun onBackPressed() {
             if (doubleBackToExitPressedOnce) {

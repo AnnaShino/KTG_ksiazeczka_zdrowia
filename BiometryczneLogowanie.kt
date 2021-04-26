@@ -1,5 +1,7 @@
 package com.example.ktg
 
+//wymagane importy związane z działaniem aplikacji
+
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -15,11 +17,13 @@ import kotlin.system.exitProcess
 
 class BiometryczneLogowanie : AppCompatActivity() {
 
+    // inicjalizacje biometryki
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        
         // poniższy fragment pozwala na usunięcie nieestetycznego górnego z nazwą layautu
         super.onCreate(savedInstanceState)
         window.setFeatureInt(
@@ -29,7 +33,7 @@ class BiometryczneLogowanie : AppCompatActivity() {
         this.supportActionBar!!.hide()
         setContentView(R.layout.biometryczne)
 
-        //inicjacja biometrii
+        //inicjalizacja biometrii
         executor = ContextCompat.getMainExecutor(this)
 
         biometricPrompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {

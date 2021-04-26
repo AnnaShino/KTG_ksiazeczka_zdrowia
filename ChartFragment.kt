@@ -1,5 +1,7 @@
 package com.example.ktg
 
+//wymagane importy związane z działaniem aplikacji
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
@@ -17,6 +19,7 @@ import kotlin.system.exitProcess
 
 class ChartFragment: AppCompatActivity() {
 
+    //inicjalizacja paska i działanie przycisków
     lateinit var toolbar: ActionBar
 
     private val mOnNavigationItemSelectedListener =
@@ -43,6 +46,7 @@ class ChartFragment: AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
+        
         // poniższy fragment pozwala na usunięcie nieestetycznego górnego z nazwą layautu
         super.onCreate(savedInstanceState)
         window.setFeatureInt(
@@ -74,7 +78,8 @@ class ChartFragment: AppCompatActivity() {
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
-
+    
+    //poniższy fragment odpowiada za wychodzenie z aplikacji za pomocą przycisku funkcyjnego
     private var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {

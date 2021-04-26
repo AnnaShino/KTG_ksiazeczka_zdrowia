@@ -1,5 +1,7 @@
 package com.example.ktg
 
+//wymagane importy związane z działaniem aplikacji
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -17,6 +19,7 @@ import kotlin.system.exitProcess
 
 class Istrukcja : AppCompatActivity() {
 
+    //inicjalizacja paska i działanie przycisków
     lateinit var toolbar: ActionBar
 
     private val mOnNavigationItemSelectedListener =
@@ -42,6 +45,7 @@ class Istrukcja : AppCompatActivity() {
             }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        
         // poniższy fragment pozwala na usunięcie nieestetycznego górnego z nazwą layautu
         super.onCreate(savedInstanceState)
         window.setFeatureInt(
@@ -51,6 +55,7 @@ class Istrukcja : AppCompatActivity() {
         this.supportActionBar!!.hide()
         setContentView(R.layout.instrukcja)
 
+        //pole odtwarzające konkretną zawartość video oraz przyciski funkcyjne
         val videoView: VideoView = videoView34
 
         val mediaController = MediaController(this)
@@ -94,6 +99,7 @@ class Istrukcja : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
+    //poniższy fragment odpowiada za wychodzenie z aplikacji za pomocą przycisku funkcyjnego
     private var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {

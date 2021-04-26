@@ -1,5 +1,7 @@
 package com.example.ktg
 
+//wymagane importy związane z działaniem aplikacji
+
 import android.Manifest.permission.RECORD_AUDIO
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.bluetooth.BluetoothAdapter
@@ -22,6 +24,7 @@ import kotlin.system.exitProcess
 
 class KTG: AppCompatActivity() {
 
+    //inicjalizacja paska i działanie przycisków
     lateinit var toolbar: ActionBar
 
     lateinit var mr: MediaRecorder
@@ -48,6 +51,7 @@ class KTG: AppCompatActivity() {
                 false
             }
 
+    // wymagane "odpowiedzi" związane z BT
     //REQUEST_CODE_ENABLE_BT
     private val REQUEST_CODE_ENABLE_BT: Int = 1;
 
@@ -60,6 +64,8 @@ class KTG: AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
+        
+        // poniższy fragment pozwala na usunięcie nieestetycznego górnego z nazwą layautu
         super.onCreate(savedInstanceState)
         window.setFeatureInt(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -196,6 +202,7 @@ class KTG: AppCompatActivity() {
 
     }
 
+    // nadpisanie działania BT
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
             REQUEST_CODE_ENABLE_BT ->
@@ -210,6 +217,7 @@ class KTG: AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    // nadpisanie nagrywania
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -217,6 +225,7 @@ class KTG: AppCompatActivity() {
             findViewById<ImageButton>(R.id.record).isEnabled = true
     }
 
+    //poniższy fragment odpowiada za wychodzenie z aplikacji za pomocą przycisku funkcyjnego
     private var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {

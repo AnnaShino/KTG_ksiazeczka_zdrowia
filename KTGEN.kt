@@ -1,11 +1,14 @@
 package com.example.ktg
 
-import android.Manifest
+import android.Manifest.permission.RECORD_AUDIO
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.bluetooth.BluetoothAdapter
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.media.MediaPlayer
+import android.media.AudioManager
 import android.media.MediaRecorder
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -17,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.time.LocalDate
+import java.time.LocalTime
 import kotlin.system.exitProcess
 
 class KTGEN: AppCompatActivity() {
@@ -71,38 +75,47 @@ class KTGEN: AppCompatActivity() {
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView_en)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
+        //audioRelay
+        val ii = findViewById<ImageButton>(R.id.app)
+        ii.setOnClickListener {
+            var launchIntent: Intent? = null
+            try {
+                launchIntent = packageManager.getLaunchIntentForPackage("com.azefsw.audioconnect&hl=pl&gl=US")
+            } catch (ignored: Exception) {
+            }
+            if (launchIntent == null) {
+                startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://play.google.com/store/apps/details?id=" + "com.azefsw.audioconnect&hl=pl&gl=US")))
+            } else {
+                startActivity(launchIntent)
+            }}
 
         // włączanie i wyłączanie dźwięku
 
-        var ring = MediaPlayer.create(this, R.raw.ktg)
+        val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0)
 
         findViewById<ImageButton>(R.id.play).isEnabled = true
         findViewById<ImageButton>(R.id.stop).isEnabled = false
 
         findViewById<ImageButton>(R.id.play).setOnClickListener {
-            if (BTadapter.isEnabled) {
-                ring.start()
+                am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE,0)
                 findViewById<ImageButton>(R.id.play).isEnabled = false
-                findViewById<ImageButton>(R.id.stop).isEnabled = true
-            }
-            if (!BTadapter.isEnabled) {
-                Toast.makeText(this, "No BT module running and no paired KTG device", Toast.LENGTH_LONG).show() }            }
+                findViewById<ImageButton>(R.id.stop).isEnabled = true            
+        }
 
         findViewById<ImageButton>(R.id.stop).setOnClickListener {
-            if (BTadapter.isEnabled && ring.isPlaying) {
-                ring.pause()
+                am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0)
                 findViewById<ImageButton>(R.id.play).isEnabled = true
                 findViewById<ImageButton>(R.id.stop).isEnabled = false}
-            if (!BTadapter.isEnabled){
-                Toast.makeText(this, "No BT module running and no paired KTG device", Toast.LENGTH_LONG).show() }
         }
 
 
         // nagrywanie i zapisywanie dźwięku
 
         val localDateNow = LocalDate.now().toString()
+        val localTimeNow = LocalTime.now().toString()
 
-        val path: String = filesDir.absolutePath + "$localDateNow.mp3"
+        val path: String = getExternalFilesDir("").toString() + "/KTG.Day.$localDateNow.Time.$localTimeNow..mp3"
 
         mr = MediaRecorder()
 
@@ -110,12 +123,9 @@ class KTGEN: AppCompatActivity() {
         findViewById<ImageButton>(R.id.stoprecord).isEnabled = false
 
 
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED)
-            ActivityCompat.requestPermissions(this, arrayOf(
-                Manifest.permission.RECORD_AUDIO,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ),111)
-        findViewById<ImageButton>(R.id.record).isEnabled = true
+        if(ActivityCompat.checkSelfPermission(this, RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this, arrayOf(RECORD_AUDIO, WRITE_EXTERNAL_STORAGE),111)
+            findViewById<ImageButton>(R.id.record).isEnabled = true
 
         findViewById<ImageButton>(R.id.record).setOnClickListener{
             mr.setAudioSource(MediaRecorder.AudioSource.DEFAULT)

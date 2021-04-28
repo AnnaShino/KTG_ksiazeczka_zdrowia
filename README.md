@@ -22,11 +22,18 @@ Aby aplikacja "szła z duchem czasu" dodano zabezpieczenie biometryczne.
 
 Dodatkowo Aplikacja dostosowuje się do motywu telefony (ciemny / jasny) dzięki czemu jest bardziej przyjazna użytkownikiwi.
 
-Aplikacja prezentuje możliwości telefonu po połączeniu z urządzeniem takim jak KTG. Przykładem jest odtwarzanie dźwięku z KTG oraz zapis dźwięku z badania w formie mp3. Moduł ten jest związany z Bluetooth :) 
+Aplikacja pozwala na nagrywanie dźwięku i zapisanie go w pamięci wewnętrznej telefonu (poniżej wykorzystane ścieżki) :) 
+
+| Method | Result |
+|:-----------|:------------|
+| getCacheDir() | /data/data/*package*/cache | 
+| getFilesDir() | /data/data/*package*/files | 
+| getFilesDir().getParent() | /data/data/*package* | 
 
 # WBUDOWANA BAZA DANYCH
 
 Dzięki wykorzystaniu wbudowanej bazy ddanych, nie ma konieczności łączenia się z siecią. W przypadku aplikacji "komercyjnych" nie zalecałabym jednak takiego rozwiązania.
+
 
 # POZWOLENIA
 
@@ -68,3 +75,6 @@ W aplikacji wykorzystano 5 filmów z YOUTUBE w ramach przykładu. Poniżej umies
 
 Stroną podłączoną w jednym z peneli jest PulsMedycyny:
 * https://pulsmedycyny.pl/
+
+Streamowanie dźwięku za pośrednictwem aplikacji AUDIORELAY:
+* https://audiorelay.net/

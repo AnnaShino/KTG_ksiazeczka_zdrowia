@@ -5,10 +5,12 @@ package com.example.ktg
 import android.Manifest.permission.RECORD_AUDIO
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.bluetooth.BluetoothAdapter
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.media.MediaPlayer
+import android.media.AudioManager
 import android.media.MediaRecorder
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -20,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.time.LocalDate
+import java.time.LocalTime
 import kotlin.system.exitProcess
 
 class KTG: AppCompatActivity() {
@@ -73,24 +76,39 @@ class KTG: AppCompatActivity() {
         )
         this.supportActionBar!!.hide()
         setContentView(R.layout.ktg)
-
-
+        
         // druga część związana z bottomNavigation
         toolbar = supportActionBar!!
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        
+        //audioRelay
+        val ii = findViewById<ImageButton>(R.id.app)
+        ii.setOnClickListener {
+            var launchIntent: Intent? = null
+            try {
+                launchIntent = packageManager.getLaunchIntentForPackage("com.azefsw.audioconnect&hl=pl&gl=US")
+            } catch (ignored: Exception) {
+            }
+            if (launchIntent == null) {
+                startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://play.google.com/store/apps/details?id=" + "com.azefsw.audioconnect&hl=pl&gl=US")))
+            } else {
+                startActivity(launchIntent)
+            }}
+
 
 
         // włączanie i wyłączanie dźwięku
 
-        var ring = MediaPlayer.create(this, R.raw.ktg)
+        val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0)
 
         findViewById<ImageButton>(R.id.play).isEnabled = true
         findViewById<ImageButton>(R.id.stop).isEnabled = false
 
         findViewById<ImageButton>(R.id.play).setOnClickListener {
             if (BTadapter.isEnabled) {
-                ring.start()
+                am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE,0)
                 findViewById<ImageButton>(R.id.play).isEnabled = false
                 findViewById<ImageButton>(R.id.stop).isEnabled = true
             }
@@ -98,21 +116,19 @@ class KTG: AppCompatActivity() {
                 Toast.makeText(this, "Brak uruchomionego modułu BT i sparowanego urządzenia KTG", Toast.LENGTH_LONG).show() }            }
 
         findViewById<ImageButton>(R.id.stop).setOnClickListener {
-            if (BTadapter.isEnabled && ring.isPlaying) {
-                ring.pause()
+            if (BTadapter.isEnabled) {
+                am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0)
                 findViewById<ImageButton>(R.id.play).isEnabled = true
                 findViewById<ImageButton>(R.id.stop).isEnabled = false}
-            if (!BTadapter.isEnabled){
-                Toast.makeText(this, "Brak uruchomionego modułu BT i sparowanego urządzenia KTG", Toast.LENGTH_LONG).show() }
         }
 
 
         // nagrywanie i zapisywanie dźwięku
 
         val localDateNow = LocalDate.now().toString()
+        val localTimeNow = LocalTime.now().toString()
 
-        val path: String = filesDir.absolutePath + "$localDateNow.mp3"
-
+        val path: String = getExternalFilesDir("").toString() + "/KTG.Day.$localDateNow.Time.$localTimeNow..mp3"
 
         mr = MediaRecorder()
 
@@ -125,7 +141,7 @@ class KTG: AppCompatActivity() {
             findViewById<ImageButton>(R.id.record).isEnabled = true
 
         findViewById<ImageButton>(R.id.record).setOnClickListener{
-            mr.setAudioSource(MediaRecorder.AudioSource.MIC)
+            mr.setAudioSource(MediaRecorder.AudioSource.DEFAULT)
             mr.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
             mr.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB)
             mr.setOutputFile(path)
@@ -140,7 +156,6 @@ class KTG: AppCompatActivity() {
             findViewById<ImageButton>(R.id.record).isEnabled = true
             findViewById<ImageButton>(R.id.stoprecord).isEnabled = false
         }
-
 
         //init BTadapter
         BTadapter = BluetoothAdapter.getDefaultAdapter()
@@ -177,7 +192,6 @@ class KTG: AppCompatActivity() {
         //wykrywalność BT
         findViewById<Button>(R.id.wykrywalnoscBT).setOnClickListener {
             if (!BTadapter.isDiscovering) {
-                Toast.makeText(this, "Urządzenie widoczne", Toast.LENGTH_LONG).show()
                 val intent = Intent(Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE))
                 startActivityForResult(intent, REQUEST_CODE_DISCOVERABLE_BT)
             }

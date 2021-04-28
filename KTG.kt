@@ -107,16 +107,12 @@ class KTG: AppCompatActivity() {
         findViewById<ImageButton>(R.id.stop).isEnabled = false
 
         findViewById<ImageButton>(R.id.play).setOnClickListener {
-            if (BTadapter.isEnabled) {
                 am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE,0)
                 findViewById<ImageButton>(R.id.play).isEnabled = false
-                findViewById<ImageButton>(R.id.stop).isEnabled = true
-            }
-            if (!BTadapter.isEnabled) {
-                Toast.makeText(this, "Brak uruchomionego modułu BT i sparowanego urządzenia KTG", Toast.LENGTH_LONG).show() }            }
+                findViewById<ImageButton>(R.id.stop).isEnabled = true            
+        }
 
         findViewById<ImageButton>(R.id.stop).setOnClickListener {
-            if (BTadapter.isEnabled) {
                 am.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0)
                 findViewById<ImageButton>(R.id.play).isEnabled = true
                 findViewById<ImageButton>(R.id.stop).isEnabled = false}
